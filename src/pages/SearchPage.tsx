@@ -1,13 +1,35 @@
 import React, { ChangeEvent, useState } from 'react';
 import { styled } from 'styled-components';
 import { IcSearch } from '../assets/svgs';
+import { api } from '../apis/api';
+import { BookInterface } from '../interfaces/bookInterface';
 
-const SearchPage = () => {
+const SearchPage: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [, setBookList] = useState<BookInterface[]>([]);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchValue(e.target.value);
+  };
+
+  const submitSearchValue = () => {
+    getBookList();
+  };
+
+  const getBookList = async () => {
+    try {
+      const { data } = await api.get('/v3/search/book', {
+        params: {
+          query: searchValue,
+        },
+      });
+      setBookList(data.documents);
+    } catch {
+      (err: ErrorEvent) => {
+        console.error(err);
+      };
+    }
   };
 
   return (
@@ -19,7 +41,7 @@ const SearchPage = () => {
           placeholder="search books!!"
           onChange={handleSearchValue}
         ></Input>
-        <StyledIcSearch />
+        <StyledIcSearch onClick={submitSearchValue} />
       </SearchSection>
       <MainSection></MainSection>
     </Container>
