@@ -24,6 +24,10 @@ const GlobalStyle = styled.createGlobalStyle`
   select {
     cursor: pointer;
   }
+
+  svg {
+    cursor: pointer;
+  }
 `;
 
 export default GlobalStyle;
