@@ -9,7 +9,7 @@ const Router: React.FC = () => {
         <Routes>
           <Route path="/"></Route>
           <Route path="/search" element={<SearchPage />}></Route>
-          <Route path="/:bookid"></Route>
+          <Route path="/:bookTitle"></Route>
         </Routes>
       </BrowserRouter>
     </>
