@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { styled } from 'styled-components';
 import { IcSearch } from '../assets/svgs';
 import { api } from '../apis/api';
@@ -43,11 +43,6 @@ const SearchPage: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    getBookList();
-    window.scrollTo(0, 0);
-  }, [currentPage]);
-
   const bookPostList = bookList
     ? bookList.map((book, idx) => {
         const { title, contents, thumbnail } = book;
@@ -71,7 +66,14 @@ const SearchPage: React.FC = () => {
         {isSearch ? (
           <ul>
             <li>
-              <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+              <button
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                  getBookList();
+                  window.scrollTo(0, 0);
+                }}
+                disabled={currentPage === 1}
+              >
                 {'prevpage'}
               </button>
             </li>
@@ -80,7 +82,11 @@ const SearchPage: React.FC = () => {
             </li>
             <li>
               <button
-                onClick={() => setCurrentPage(currentPage + 1)}
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                  getBookList();
+                  window.scrollTo(0, 0);
+                }}
                 disabled={currentPage === totalPage}
               >
                 {'nextpage'}
