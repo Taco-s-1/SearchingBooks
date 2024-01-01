@@ -22,3 +22,26 @@ export const NextButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
 `;
+
+export const BookList = styled.div`
+  display: flex;
+  gap: 2rem;
+`;
+export const ListTitle = styled.p`
+  display: flex;
+  font-size: 20px;
+`;
+
+export const Carousel = styled.div`
+  display: flex;
+  gap: 2rem;
+`;
+
+export const BookTitle = styled.p`
+  display: flex;
+  font-size: 15px;
+`;
+export const BookAuthor = styled.p`
+  display: flex;
+  font-size: 15px;
+`;
