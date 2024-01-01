@@ -157,3 +157,35 @@ const PageNavigationBar = styled.nav`
     display: flex;
   }
 `;
+
+const SearchSection = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Input = styled.input`
+  width: 50rem;
+  height: 5rem;
+  padding: 1rem 5rem 1rem 2rem;
+  border-radius: 15px;
+
+  &:focus {
+    border: 2px solid #c45757;
+    outline: none;
+  }
+`;
+
+const StyledIcSearch = styled(IcSearch)`
+  position: absolute;
+  right: 2rem;
+  &:hover {
+    circle,
+    path {
+      stroke: #c45757;
+    }
+  }
+`;
+
+const MainSection = styled.div``;
